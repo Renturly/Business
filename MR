@@ -1,0 +1,115 @@
+import UIKit
+/*
+//gdp is many Product
+var randomNumber = 46
+let gdp = [12.00+Double(randomNumber), 10.00+Double(randomNumber), 8.00+Double(randomNumber), 5.00+Double(randomNumber), 3.00+Double(randomNumber), 1.53+Double(randomNumber)] //.count, pow(), sqrt()
+
+func stdev(mon : [Double]) -> Double
+{
+    let injury = Double(mon.count)
+    let average = mon.reduce(0, +) / injury //{$0 + $1
+    let sumOfSquares = mon.map {
+        pow($0 - average, 2)
+    }.reduce(0, +)
+    return sqrt(sumOfSquares / injury)
+}
+
+//print(stdev(mon: gdp))
+
+//print(gdp.count)
+
+//print(pow(20, 2))
+
+//print(sqrt(400))
+
+//print(gdp.count)
+func average(gdp : [Double]) -> Double
+{
+    var charge: Double = 0.00
+    gdp.forEach { mon in
+        charge += mon
+    }
+    let average = Int(charge) / gdp.count
+    return Double(average)
+}
+
+print(average(gdp: gdp))
+
+//average, stdev, count, sqrt
+//mean = average - theoretical value
+var mean: Double = average(gdp: gdp)
+//standard deviation/sqrt(count)
+var standardDeviation = stdev(mon: gdp)
+print(standardDeviation)
+//sqrt(count)
+var denominator = sqrt(Double(gdp.count))
+
+//Student's t-test
+var tTest = (mean - 6.78)/(standardDeviation/denominator)
+print(tTest)
+*/
+class business {
+    
+    let theoreticalValue = 6.78
+    //var marketPrice = [46.00, 11.00, 8.00, 5.00, 3.00, 2.00, 1.00]
+    var marketPrice: Array<Double>
+    
+    init(competition: Array<Double>)
+    {
+        self.marketPrice = competition
+    }
+    
+    func stdev(pokemon: [Double]) -> Double
+    {
+        let injury = Double(pokemon.count)
+        let average = pokemon.reduce(0, +) / injury //{$0 + $1
+        let sumOfSquares = pokemon.map {
+            pow($0 - average, 2)
+        }.reduce(0, +)
+        return sqrt(sumOfSquares / injury)
+    }
+    
+    func average(marketPrice: [Double]) -> Double
+    {
+        var charge: Double = 0.00
+        marketPrice.forEach { pokemon in
+            charge += pokemon
+        }
+        let average = Int(charge) / marketPrice.count
+        return Double(average)
+    }
+    
+    func profit() -> Double
+    {
+        //average, stdev, count, sqrt
+        //mean = average - theoretical value
+        var mean = average(marketPrice: marketPrice)
+        //standard deviation/sqrt(count)
+        var standardDeviation = stdev(pokemon: marketPrice)
+        //sqrt(count)
+        var denominator = sqrt(Double(marketPrice.count))
+        //Student's t-test
+        var tTest = (mean - theoreticalValue)/(standardDeviation/denominator)
+        return tTest
+    }
+    
+    func communication() -> String
+    {
+        if self.profit() > 0.579
+        {
+            return "Have a good weekend."
+        } else {
+            return "Supply high quantity of pokemon for cheap."
+        }
+    }
+}
+
+print(business(competition: [35.00, 11.00]).profit())
+print(business(competition: [35.00, 11.00]).communication())
+
+
+
+
+
+
+
